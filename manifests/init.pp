@@ -488,6 +488,8 @@
 #   Boolean. Should the caching of the webapp be disabled. This helps with some
 #   display issues in grafana.
 #   Default: false
+# [*gr_url_prefix*]
+#   Setting the relativ URL of graphite (URL_PREFIX in local_settings.py)
 # [*gr_apache_port*]
 #   DEPRECATED. Use `gr_web_server_port` now. Trying to set this variable will
 #   cause puppet to fail.
@@ -723,7 +725,9 @@ class graphite (
   $gr_rendering_hosts_timeout             = '1.0',
   $gr_prefetch_cache                      = undef,
   $gr_apache_port                         = undef,
-  $gr_apache_port_https                   = undef,) inherits graphite::params {
+  $gr_apache_port_https                   = undef,
+  $gr_url_prefix                          = undef,
+) inherits graphite::params {
   # Validation of input variables.
   # TODO - validate all the things
   validate_string($gr_use_remote_user_auth)

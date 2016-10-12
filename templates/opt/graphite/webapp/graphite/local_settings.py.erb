@@ -314,3 +314,8 @@ end
 # Configure static URL prefix for Django admin pages
 STATIC_URL = '/static/'
 <% end %>
+
+<%- if (url_prefix = scope.lookupvar('graphite::gr_url_prefix')) -%>
+# Graphite should sit under a url, e.g. /graphite
+URL_PREFIX = <%= url_prefix.to_s.dump %>
+<%- end -%>
